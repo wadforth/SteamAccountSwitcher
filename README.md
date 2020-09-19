@@ -9,6 +9,7 @@ Basic Batch Script to allow seemless switching between two Steam accounts. This 
 
 ### Long-term
 - [ ] **Switch to Python**
+- [ ] **Updated interface**
 - [ ] **Convert to executable**
 
 ### Extras
