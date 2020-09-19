@@ -1,13 +1,18 @@
 # Steam Account Switcher
 Basic Batch Script to allow seemless switching between two Steam accounts. This is a creation based off a script found on reddit, just an improvement of it (sorry, whoever originally created it - cannot find the script anymore).
 
+### Short-term
 - [x] **Switching Process**
 - [x] **Config Implementation** 
-- [ ] **Switch to Python**
 - [ ] **Allow user to input how many accounts**
-- [ ] **Config encryption (not needed as it is created in your local appdata, but can be done)**
 - [ ] **Edit/delete accounts (you can do this manually by just deleting the config file)**
+
+### Long-term
+- [ ] **Switch to Python**
 - [ ] **Convert to executable**
+
+### Extras
+- [ ] **Config encryption (not needed as it is created in your local appdata, but can be done)**
 
 # How does it work?
 Quite simple actually. The batch file is ran and checks to see if Steam is currently open, if it is it'll close the process. It will then check to see if you already have a pre-existing config file in the location the batch originally stores it.
