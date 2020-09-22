@@ -5,7 +5,7 @@ Basic Batch Script to allow seemless switching between two Steam accounts. This 
 - [x] **Switching Process**
 - [x] **Config Implementation** 
 - [ ] **Allow user to input how many accounts**
-- [ ] **Edit/delete accounts (you can do this manually by just deleting the config file)**
+- [x] **Edit/delete accounts (you can do this manually by just deleting the config file)**
 
 ### Long-term
 - [ ] **Switch to Python**
@@ -28,6 +28,8 @@ All data is stored locally, so there is no need to worry of where your data is g
 
 A simple text config file is getting stored at
 >%localappdata%/SteamAccountSwitcher/config.txt
+
+An option has been added to delete the data.
 
 # Why?
 Well, the way Steam is currently set-up (in my experience anyway), after you log out of an account, you always have to login to the other account even if your machine is trusted and you've logged in and selected remember password before. This can become tedious if you're constantly switching, especially if you have 2FA enabled. The script fully bypass' entering your password and 2FA (after first time using the script).
