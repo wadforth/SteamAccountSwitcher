@@ -1,10 +1,10 @@
 # Steam Account Switcher
-Basic Batch Script to allow seemless switching between two Steam accounts. This is a creation based off a script found on reddit, just an improvement of it (sorry, whoever originally created it - cannot find the script anymore).
+Basic Batch Script to allow seemless switching between up to 7 accounts.
 
 ### Short-term
 - [x] **Switching Process**
 - [x] **Config Implementation** 
-- [ ] **Allow user to input how many accounts**
+- [x] **Allow user to input how many accounts**
 - [x] **Edit/delete accounts (you can do this manually by just deleting the config file)**
 
 ### Long-term
