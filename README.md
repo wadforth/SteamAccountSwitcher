@@ -1,5 +1,5 @@
 # Steam Account Switcher
-Basic Batch Script to allow seemless switching between up to 7 accounts.
+Basic Batch Script to allow seamless switching between up to 7 accounts.
 
 ### Short-term
 - [x] **Switching Process**
