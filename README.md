@@ -8,9 +8,9 @@ Basic Batch Script to allow seamless switching between up to 7 accounts.
 - [x] **Edit/delete accounts (you can do this manually by just deleting the config file)**
 
 ### Long-term
-- [ ] **Switch to Python**
-- [ ] **Updated interface**
-- [ ] **Convert to executable**
+- [x] **Switch to Python**
+- [x] **Updated interface**
+- [x] **Convert to executable**
 
 ### Extras
 - [ ] **Config encryption (not needed as it is created in your local appdata, but can be done)**
