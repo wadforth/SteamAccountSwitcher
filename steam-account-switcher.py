@@ -5,9 +5,6 @@ import os
 import wmi
 import subprocess
 import webbrowser
-import ctypes
-
-ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)
 
 
 class SteamAccountSwitcher:
@@ -15,7 +12,6 @@ class SteamAccountSwitcher:
         super().__init__()
 
 
-ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)
 path = os.path.expanduser("~\Documents\SteamAccountSwitcher")
 filepath = os.path.join(path, "config.txt")
 
