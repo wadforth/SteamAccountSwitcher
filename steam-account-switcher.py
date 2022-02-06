@@ -4,6 +4,10 @@ from ttkthemes import ThemedTk
 import os
 import wmi
 import subprocess
+import webbrowser
+import ctypes
+
+ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)
 
 
 class SteamAccountSwitcher:
@@ -11,7 +15,7 @@ class SteamAccountSwitcher:
         super().__init__()
 
 
-os.system("taskkill /im steam.exe /F")
+ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)
 path = os.path.expanduser("~\Documents\SteamAccountSwitcher")
 filepath = os.path.join(path, "config.txt")
 
@@ -25,13 +29,18 @@ def read_config():
     print(account_list)
 
 
+def clear_file_check():
+    os.remove(filepath)
+    return
+
+
 def first_time():
+
     app = ThemedTk(theme="arc")
     app.config(bg="#F5F6F7")
-    frame = Frame(app)
 
     app.title("Setup")
-    app.geometry("250x240")
+    app.geometry("250x260")
 
     accounts_label = ttk.Label(app, text="Accounts - Setup", font="Helvetica")
     accounts_label.place(x=65, y=10)
@@ -81,6 +90,14 @@ def first_time():
     account5_label.place(x=15, y=179)
     account5_label.config(background="#F5F6F7", foreground="#6A626D")
 
+    config_label = ttk.Label(app, text="Config Location", font=("Helvetica", 10))
+    config_label.place(x=17, y=215)
+    config_label.config(background="#F5F6F7", foreground="#6A626D")
+
+    config_location = ttk.Label(app, text=path, font=("Helvetica", 7))
+    config_location.place(x=15, y=239)
+    config_location.config(background="#F5F6F7", foreground="#6A626D")
+
     def write_file():
         with open(filepath, "w") as file:
             file.write(account1.get() + "\n")
@@ -102,6 +119,7 @@ def first_time():
             os.open(filepath, os.O_CREAT),
             write_file(),
             app.destroy(),
+            main(),
         ],
     ).place(x=155, y=205)
 
@@ -111,9 +129,7 @@ def first_time():
 
 
 def config_exist():
-    if not os.path.exists(path):
-        # os.makedirs(path)
-        # os.open(filepath, os.O_CREAT)
+    if not os.path.exists(filepath):
         first_time()
     else:
         return
@@ -135,9 +151,13 @@ def main():
 
     ttk.Separator(app, orient="horizontal").place(width=330, y=37)
 
-    author = ttk.Label(app, text=" @wadforth", font="Helvetica")
-    author.pack(side=LEFT, anchor=SW)
+    def callback(url):
+        webbrowser.open_new(url)
+
+    author = ttk.Label(app, text=" @wadforth  ", font=("Helvetica", 10), cursor="hand2")
+    author.pack(side=RIGHT, anchor=SE)
     author.config(background="#F5F6F7", foreground="#6A626D")
+    author.bind("<Button-1>", lambda e: callback("http://www.github.com/wadforth"))
 
     y_placement = 50
     for item in account_list:
@@ -147,6 +167,7 @@ def main():
             text=item,
             command=lambda x=item: [
                 x,
+                os.system("taskkill /im steam.exe /F"),
                 subprocess.call(
                     "powershell.exe reg add HKCU\Software\Valve\Steam /v AutoLoginUser /t REG_SZ /d  "
                     + x
@@ -162,14 +183,26 @@ def main():
         button.place(y=y_placement, x=25)
         y_placement += 40
 
+        ttk.Button(
+            app,
+            text="Edit",
+            width=4,
+            command=lambda: [
+                app.destroy(),
+                os.remove(filepath),
+                os.rmdir(path),
+                first_time(),
+            ],
+        ).place(x=190, y=5)
+
     if len(account_list) == 5:
-        app.geometry("250x280")
+        app.geometry("250x260")
     elif len(account_list) == 4:
-        app.geometry("250x230")
+        app.geometry("250x220")
     elif len(account_list) == 3:
         app.geometry("250x180")
     else:
-        app.geometry("250x130")
+        app.geometry("250x140")
 
     app.resizable(False, False)
     app.mainloop()
