@@ -104,7 +104,7 @@ def first_time():
             if len(account4.get()) != 0:
                 file.write(account4.get() + "\n")
             if len(account5.get()) != 0:
-                file.write(account2.get())
+                file.write(account5.get())
 
     ttk.Button(
         app,
