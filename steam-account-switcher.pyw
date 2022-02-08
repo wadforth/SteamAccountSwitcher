@@ -25,9 +25,10 @@ def read_config():
 
 
 def first_time():
-
+    account_list.clear()
     app = ThemedTk(theme="arc")
     app.config(bg="#F5F6F7")
+    app.iconbitmap(r"steam.ico")
 
     app.title("Setup")
     app.geometry("250x260")
@@ -132,7 +133,7 @@ def main():
     app = ThemedTk(theme="arc")
     app.config(bg="#F5F6F7")
     frame = Frame(app)
-
+    app.iconbitmap(r"steam.ico")
     app.title("Steam Account Switcher")
 
     accounts_label = ttk.Label(app, text="Accounts", font="Helvetica")
@@ -151,6 +152,7 @@ def main():
 
     y_placement = 50
     for item in account_list:
+
         button = ttk.Button(
             app,
             width="30",
@@ -173,17 +175,17 @@ def main():
         button.place(y=y_placement, x=25)
         y_placement += 40
 
-        ttk.Button(
-            app,
-            text="Edit",
-            width=4,
-            command=lambda: [
-                app.destroy(),
-                os.remove(filepath),
-                os.rmdir(path),
-                first_time(),
-            ],
-        ).place(x=190, y=5)
+    ttk.Button(
+        app,
+        text="Edit",
+        width=4,
+        command=lambda: [
+            app.destroy(),
+            os.remove(filepath),
+            os.rmdir(path),
+            first_time(),
+        ],
+    ).place(x=190, y=5)
 
     if len(account_list) == 5:
         app.geometry("250x260")
