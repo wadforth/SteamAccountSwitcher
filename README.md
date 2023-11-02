@@ -1,3 +1,6 @@
+# Scrapped. Steam Added This Feature After Many Years :D
+
+
 # Steam Account Switcher
 Batch Script allows up to 7 accounts, but is outdated. Python script/binary allows up to 5 with a cleaner UI and better UX.
 
